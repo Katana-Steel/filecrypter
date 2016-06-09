@@ -1,23 +1,38 @@
 CXX=g++
 AR=ar
+CFLAGS=-O2 -c
+YFLAGS=-f coff -DWIN32
+OBJS=s-box.o \
+    crypt.o \
+    crypt_g2.o \
+    crypt_g2.asm.o
+#        tcp_socket.o \
 
-all: lib example
-
-lib: .FORCE
-	@echo -n compiling s-box.cc ...
-	@$(CXX) -c s-box.cc
-	@echo done
-	@echo -n compiling crypt.cc ...
-	@$(CXX) -c crypt.cc
-	@echo done
-	@echo -n creating xcrypter.a ...
-	@$(AR) -rcs xcrypter.a s-box.o crypt.o
-	@./placefiles.sh
-	@echo done
-	@echo xcrypter version 1.0 static lib is found in ./lib/
+all: xcrypter.a
+	@echo xcrypter version 1.0.2a static lib is found in ./lib/
 	@echo and the header files are in ./include/
-
-example: .FORCE
 	cd example && make
 
-.FORCE:
+ncrypter:
+	@cd example && make
+
+xcrypter.a: $(OBJS)
+	@echo "AR   xcrypter.a"
+	@$(AR) -rcs xcrypter.a $(OBJS)
+	@echo "INS  xcrypter.a"
+	@./placefiles.sh
+
+.cc.o:
+	@echo "CC   $<"
+	@$(CXX) $(CFLAGS) $<
+
+crypt_g2.asm.o:
+	@echo "ASM  crypt_g2.asm"
+	@yasm $(YFLAGS) -o crypt_g2.asm.o crypt_g2.asm
+
+cleanall: clean
+
+clean:
+	@echo -n "cleaning ... "
+	@rm -f *.o xcrypter.a ncrypter
+	@echo "done"

@@ -4,6 +4,7 @@
 	Version="8,00"
 	Name="xcrypter"
 	ProjectGUID="{CB45444E-A3C7-4EFB-A25C-3E1B7AF089F1}"
+	RootNamespace="xcrypter"
 	>
 	<Platforms>
 		<Platform
@@ -13,58 +14,6 @@
 	<ToolFiles>
 	</ToolFiles>
 	<Configurations>
-		<Configuration
-			Name="Debug|Win32"
-			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
-			IntermediateDirectory="$(ConfigurationName)"
-			ConfigurationType="4"
-			>
-			<Tool
-				Name="VCPreBuildEventTool"
-			/>
-			<Tool
-				Name="VCCustomBuildTool"
-			/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"
-			/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"
-			/>
-			<Tool
-				Name="VCMIDLTool"
-			/>
-			<Tool
-				Name="VCCLCompilerTool"
-			/>
-			<Tool
-				Name="VCManagedResourceCompilerTool"
-			/>
-			<Tool
-				Name="VCResourceCompilerTool"
-			/>
-			<Tool
-				Name="VCPreLinkEventTool"
-			/>
-			<Tool
-				Name="VCLibrarianTool"
-			/>
-			<Tool
-				Name="VCALinkTool"
-			/>
-			<Tool
-				Name="VCXDCMakeTool"
-			/>
-			<Tool
-				Name="VCBscMakeTool"
-			/>
-			<Tool
-				Name="VCFxCopTool"
-			/>
-			<Tool
-				Name="VCPostBuildEventTool"
-			/>
-		</Configuration>
 		<Configuration
 			Name="Release|Win32"
 			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
@@ -131,8 +80,63 @@
 				>
 			</File>
 			<File
+				RelativePath=".\crypt_g2.asm"
+				>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Building Assembly"
+						CommandLine="g:\cygwin\bin\yasm -f win32 -DWIN32 -o $(OutDir)\$(InputFileName).obj $(InputDir)\$(InputFileName)"
+						AdditionalDependencies="$(OutDir)\$(InputName).obj"
+						Outputs="$(OutDir)\$(InputFileName).obj"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\crypt_g2.cc"
+				>
+			</File>
+			<File
+				RelativePath=".\crypt_g2_x64.asm"
+				>
+				<FileConfiguration
+					Name="Release|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\crypt_g2_x86.asm"
+				>
+				<FileConfiguration
+					Name="Release|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
 				RelativePath=".\s-box.cc"
 				>
+			</File>
+			<File
+				RelativePath=".\tcp_socket.cc"
+				>
+				<FileConfiguration
+					Name="Release|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+					/>
+				</FileConfiguration>
 			</File>
 		</Filter>
 		<Filter
@@ -145,7 +149,19 @@
 				>
 			</File>
 			<File
+				RelativePath=".\crypt_g2.h"
+				>
+			</File>
+			<File
 				RelativePath=".\s-box.h"
+				>
+			</File>
+			<File
+				RelativePath=".\tcp_socket.h"
+				>
+			</File>
+			<File
+				RelativePath=".\xnet.h"
 				>
 			</File>
 		</Filter>

@@ -3,5 +3,5 @@
 using namespace std;
 void usage(void)
 {
-	cout << "usage: app -[c|d|e] key {infilename} {outfilename}" << endl;
+	cout << "usage: app -[c|d[1]|e[1]] key <infilename> <outfilename>" << endl;
 }

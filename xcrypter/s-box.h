@@ -6,17 +6,17 @@
  *   source code.
  ****************************************************************/
 #ifndef _s_box_h
-#define _s_box_h
+#define _s_box_h 1
 
 namespace xcrypter {
-class box 
+class box
 {
     unsigned char sbox[16][16];
 public:
     box(const char *);
     unsigned char get(unsigned char);
     unsigned char getr(unsigned char);
-};    
+};
 
 }
 #endif

@@ -1,9 +1,10 @@
-xCrypter v1.0
-(s-box cryptation algorithem)
+xCrypter v1.0.2a
+(s-box cryptography algorithem)
 
 1.	Short discription
 2.	Explanation of the “xcrypter” namespace
-3.	Credits
+3.	Explanation of the “xnet” namespace
+4.	Credits
 
 1.)
 xCrypter is a generic cryptation library, with a s-box as the key. The algorithem is mostly inspired by the AES (Rijndael) encryption algorithem. I haven’t tried to calculate the encryption strength, however it could be tough to break by hand J.
@@ -30,10 +31,16 @@ function
 makes a reversed look-up in the 2 dimentional array
 
 class crypt; 
-this is the type which handles the the encryptions and decryptions algorithem.
+this is the virtual class which handles the the encryption and decryption algorithems.
 
-crypt::crypt(const char*)
-constructer
+class crypt_g1;
+this implements the virtual class crypt with algorithm number one (the oldest).
+
+class crypt_g2;
+this implements the virtual class crypt with algorithm number two. This algorithm uses the inspiration I got from AES and adds an element from Dan Browns book Digital Fortress.
+
+crypt_g1::crypt_g1(const char*) or crypt_g2::crypt_g2(const char*)
+constructor
 initiates the box for use with the algorithem.
 
 long
@@ -41,13 +48,47 @@ crypt::enc(std::istream&, std::ostream&, unsigned char)
 function
 this function handles the encryption algorithem, it reads charaters from the standard input stream and write the encrypted charaters to the standard output stream, the encryption starts at the indicated step( the last parameter ) and returns the number of charaters encrypted.
 
-
 long
 crypt::dec(std::istream&, std::ostream&, unsigned char)
 function
 this function handles the decryption algorithem, it reads charaters from the standard input stream and write the decrypted charaters to the standard output stream, the decryption starts at the indicated step( the last parameter ) and returns the number of charaters decrypted.
 
 3.)
+namespace xnet:
+
+class TCP;
+this is the type that is intended to handle a TCP communication between a server and a client using the xcrypter::crypt to create a encrypted communication channel.
+
+TCP::TCP(const char*, bool)
+constructor
+sets up a tcp object and readies it for encrypted communication. The boolean parameter is to determine if it is the 1st generation or the 2nd generation of the algorithm to use.
+It uses the Sockets Network API and the TCP object uses wrapper functions.
+
+int
+TCP::write(std::string)
+is the encrypted write function.
+
+std::string
+TCP::read(int)
+is the encrypted read function.
+
+int
+TCP::cwrite(std::string)
+is the unencrypted write function.
+
+std::string
+TCP::cread(int)
+is the unencrypted read function.
+
+void
+TCP::setKeyPos(unsigned char)
+Sets the internal counter so it’s ready to read/write and crypt correctly.
+
+bool
+TCP::setKey(const char*)
+sets the key to use.
+
+4.)
 Written by René Kjellerup katana_steel@users.sourceforge.net
 
 All Rights reserved by René Kjellerup ®
@@ -55,4 +96,3 @@ Compile at own risk for Software as well as Hardware.
 You may modify the contens to fit you needs as long as you
 include this Licence, along with the original unmodified
 source code.
-
