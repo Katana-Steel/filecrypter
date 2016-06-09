@@ -1,0 +1,24 @@
+The quick and dirty installation guide is:
+qmake
+make
+- Unix only
+su
+./install.sh
+- on Windows run these commands in QT command prompt
+
+In teory on a unix machine with a bash shell you should be able 
+to build and install filecrypter using only the 'install.sh' 
+script.
+
+This should work on mac also, however I don't own a mac to test
+this. In any case look to the QT documentation on how to build
+QT applications on your platform.
+
+It is assumed that you have Qt 4.2 or higher install including
+the header/development packages or what ever is relevent for
+building Qt applications. As this application uses CleanLooks
+style which is added in QT 4.2.
+
+to run the application on unix
+open a terminal and enter:
+# filecrypter

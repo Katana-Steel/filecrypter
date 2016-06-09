@@ -1,0 +1,58 @@
+xCrypter v1.0
+(s-box cryptation algorithem)
+
+1.	Short discription
+2.	Explanation of the “xcrypter” namespace
+3.	Credits
+
+1.)
+xCrypter is a generic cryptation library, with a s-box as the key. The algorithem is mostly inspired by the AES (Rijndael) encryption algorithem. I haven’t tried to calculate the encryption strength, however it could be tough to break by hand J.
+
+2.)
+namespace xcrypter:
+
+class box; 
+this is the type which handles the communication with the s-box
+it loads the s-box into memory, create new if it is not pressent, make s-box table look-up, and reverse look-up
+
+box::box(const char*)
+constructer
+creates a file base upon a 2 dimentional array or load the file into a 2 dimentional array.
+
+unsigned char
+box::get(unsigned char)
+function
+makes a normal look-up in the 2 dimentional array
+
+unsigned char
+box::getr(unsigned char)
+function
+makes a reversed look-up in the 2 dimentional array
+
+class crypt; 
+this is the type which handles the the encryptions and decryptions algorithem.
+
+crypt::crypt(const char*)
+constructer
+initiates the box for use with the algorithem.
+
+long
+crypt::enc(std::istream&, std::ostream&, unsigned char)
+function
+this function handles the encryption algorithem, it reads charaters from the standard input stream and write the encrypted charaters to the standard output stream, the encryption starts at the indicated step( the last parameter ) and returns the number of charaters encrypted.
+
+
+long
+crypt::dec(std::istream&, std::ostream&, unsigned char)
+function
+this function handles the decryption algorithem, it reads charaters from the standard input stream and write the decrypted charaters to the standard output stream, the decryption starts at the indicated step( the last parameter ) and returns the number of charaters decrypted.
+
+3.)
+Written by René Kjellerup katana_steel@users.sourceforge.net
+
+All Rights reserved by René Kjellerup ®
+Compile at own risk for Software as well as Hardware.
+You may modify the contens to fit you needs as long as you
+include this Licence, along with the original unmodified
+source code.
+

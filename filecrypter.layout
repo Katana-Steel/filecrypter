@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_layout_file>
+	<ActiveTarget name="debug" />
+	<File name="file_crypter.cpp" open="0" top="0" tabpos="1">
+		<Cursor position="75" topLine="0" />
+	</File>
+	<File name="file_crypter.h" open="0" top="0" tabpos="3">
+		<Cursor position="754" topLine="1" />
+	</File>
+	<File name="filecrypter.pro" open="0" top="0" tabpos="2">
+		<Cursor position="395" topLine="0" />
+	</File>
+	<File name="main.cpp" open="0" top="0" tabpos="4">
+		<Cursor position="1163" topLine="0" />
+	</File>
+	<File name="xcrypter/crypt.cc" open="0" top="0" tabpos="0">
+		<Cursor position="639" topLine="0" />
+	</File>
+</CodeBlocks_layout_file>
